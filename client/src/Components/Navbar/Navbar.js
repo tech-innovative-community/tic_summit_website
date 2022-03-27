@@ -37,7 +37,11 @@ const Nav = () => {
           <Link to="/curriculum" className="link">
                 Curriculum
                 </Link></li>
-          <li className="centerLinkItems">News</li>
+          <li className="centerLinkItems">
+          <Link to="/blog" className="link">
+              Blog
+            </Link>
+          </li>
           <li className="centerLinkItems">
             <Link to="/faq" className="link">
               FAQ
@@ -74,7 +78,11 @@ const Nav = () => {
                 Curriculum
                 </Link>
               </li>
-            <li className="centerLinkItems__mobile">News</li>
+            <li className="centerLinkItems__mobile">
+            <Link to="/blog" className="link">
+              Blog
+            </Link>
+            </li>
             <li className="centerLinkItems__mobile">
               <Link to="/faq" className="link">
                 FAQ
