@@ -52,7 +52,7 @@ const Auth = () => {
   };
 
 
-  const { isFetching, dispatch } = useContext(AuthContext);
+  const { dispatch } = useContext(AuthContext);
   const handleLogin = async (e) => {
     e.preventDefault();
     loginCall(
