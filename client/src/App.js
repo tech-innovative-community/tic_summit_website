@@ -1,13 +1,21 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Blog from "./Components/Blog/Blog";
 import FAQ from "./Components/FAQ/FAQ";
 import Navbar from "./Components/Navbar/Navbar";
 import About from "./Pages/About/About";
 import CurriculumPage from "./Pages/Curriculum/Curriculum";
 import Home from "./Pages/Home/Home";
+import Posts from "./Pages/Post/Posts";
+import PostBlog from "./Pages/postBlog/PostBlog";
+import Auth from "./Pages/Authentication/Auth"
+import { useContext } from "react";
+import { AuthContext } from "./Context/AuthContext";
+
 
 function App() {
+  
+  const { user } = useContext(AuthContext);
+
   return (
     <div className="App">
       <Navbar />
@@ -16,7 +24,9 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/curriculum" element={<CurriculumPage />} />
-        <Route path="/blog" element={<Blog />} />
+        <Route path="/blog" element={<Posts />} />
+        <Route path="/login" element={user? <PostBlog />: <Auth/> } />
+        <Route path="/postBlog" element={user? <PostBlog /> : <Home />} />
       </Routes>
     </div>
   );

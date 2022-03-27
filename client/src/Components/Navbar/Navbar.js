@@ -28,6 +28,11 @@ const Nav = () => {
       <div className="navCenter">
         <ul className="CenterLinks">
           <li className="centerLinkItems">
+            <Link to="/" className="link">
+              Home
+            </Link>
+          </li>
+          <li className="centerLinkItems">
             <Link to="/about" className="link">
               About
             </Link>
