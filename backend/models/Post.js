@@ -5,18 +5,18 @@ const postSchema = mongoose.Schema(
   {
     userId: {
       type: String,
-      required: true,
+      required: [true , "please fill the title field"],
     },
     title: {
       type: String,
-      unique: true,
+      required: [true , "please fill the title field"],
     },
     message: {
       type: String,
       required: true,
     },
     img: {
-      type: String,
+      type: String
     },
   },
   {

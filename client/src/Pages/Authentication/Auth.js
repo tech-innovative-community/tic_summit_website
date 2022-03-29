@@ -4,7 +4,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { registerRoute } from "../../api/endpoints";
+import { registerRoute, toastOptions } from "../../api/endpoints";
 import { loginCall } from "../../api/calls";
 import { AuthContext } from "../../Context/AuthContext";
 
@@ -16,15 +16,6 @@ const Auth = () => {
   const [passwordAgain, setPasswordAgain] = useState("");
   const navigate = useNavigate();
 
-  const toastOptions = {
-    position: "top-right",
-    autoClose: 3000,
-    pauseOnHover: true,
-    draggable: true,
-    theme: "dark",
-  };
-
-
   const handleRegister = async (e) => {
     e.preventDefault();
     if (passwordAgain !== password) {
@@ -33,7 +24,7 @@ const Auth = () => {
       const user = {
         username,
         email,
-        password
+        password,
       };
       console.log(user);
       try {
@@ -42,7 +33,7 @@ const Auth = () => {
           toast.error(data.msg, toastOptions);
         }
         if (data.status === true) {
-          window.location.reload()
+          window.location.reload();
           navigate("/login");
         }
       } catch (err) {
@@ -51,14 +42,10 @@ const Auth = () => {
     }
   };
 
-
   const { dispatch } = useContext(AuthContext);
   const handleLogin = async (e) => {
     e.preventDefault();
-    loginCall(
-      { email, password},
-      dispatch
-    );
+    loginCall({ email, password }, dispatch);
   };
 
   return (

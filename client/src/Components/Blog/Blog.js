@@ -5,7 +5,6 @@
 // // import { CircularProgress } from "@material-ui/core"
 // import Skeleton from "../Skeleton/Skeleton"
 
-
 // const Blog = () => {
 //     const [posts, setPosts] = useState([])
 //     const [isError, setIsError] = useState()
@@ -25,7 +24,7 @@
 //         }
 //         fetchPost()
 //     }, [])
-    
+
 //     // point break
 //     // console.log(posts)
 
@@ -46,3 +45,12 @@
 // }
 
 // export default Blog
+
+import React from "react";
+
+const Blog = ({ posts }) => {
+  console.log(posts);
+  return <div></div>;
+};
+
+export default Blog;

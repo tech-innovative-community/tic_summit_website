@@ -1,7 +1,6 @@
 import "./skeleton.css"
 
 const Skeleton = () => {
-    console.log("miles");
     return(
         <div className="skeleton">
             <div className="skeletonTop">
