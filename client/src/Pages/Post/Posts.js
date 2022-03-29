@@ -3,20 +3,22 @@ import "./Posts.scss";
 import Skeleton from "../../Components/Skeleton/Skeleton";
 import axios from "axios";
 import Blog from "../../Components/Blog/Blog";
-import { post } from "../../api/endpoints";
+// import { post } from "../../api/endpoints";
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
+  const url = "http://localhost:5000/api/post";
   const [isError, setIsError] = useState();
   useEffect(() => {
     const fetchPost = async () => {
       try {
-        const res = await axios.get(post);
-        setPosts(
-          res.data.posts.sort((p1, p2) => {
-            return new Date(p2.createdAt) - new Date(p1.createdAt);
-          })
-        );
+        await axios.get(url).then((response) => {
+          setPosts(
+            response.data.sort((p1, p2) => {
+              return new Date(p2.createdAt) - new Date(p1.createdAt);
+            })
+          );
+        });
       } catch (error) {
         setIsError(error);
       }

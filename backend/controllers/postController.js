@@ -8,13 +8,13 @@ module.exports.Post = async (req, res, next) => {
   } catch (err) {
     res.status(500).json(err);
   }
-}
+};
 
-module.exports.getAllPost = async (req, res, next) =>{
-    try {
-        const posts = await Post.find()
-        return res.json({ status: true, posts})
-    } catch (error) {
-        next(error)
-    }
-}
+module.exports.getAllPost = async (req, res, next) => {
+  try {
+    const posts = await Post.find();
+    return res.json(posts);
+  } catch (error) {
+    next(error);
+  }
+};

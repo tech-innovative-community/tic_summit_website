@@ -1,3 +1,9 @@
-.posts{
-    font-family: "poppins";
+.posts {
+  font-family: "poppins";
+  min-height: calc(100vh - 70px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 20px 10%;
 }
