@@ -43,7 +43,7 @@ const PostBlog = () => {
           ></textarea>
           <label htmlFor="file" className="shareOption">
             <PermMediaIcon htmlColor="white" className="shareIcon" />
-            <span className="shareOptionText">Photo or Video</span>
+            <span className="shareOptionText">Photo</span>
             <input
               style={{ display: "none" }}
               type="file"
@@ -60,7 +60,7 @@ const PostBlog = () => {
               onClick={() => setFile(null)}
             />
           </div>
-        )}
+        )} 
           <button type="submit">Post</button>
         </form>
       </div>

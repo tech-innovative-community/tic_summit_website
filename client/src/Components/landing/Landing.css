@@ -47,6 +47,7 @@
 
 .rightLanding .header span {
   color: var(--pink);
+  position: relative;
 }
 .rightLanding .header span::after {
   content: "";

@@ -21,7 +21,7 @@ const Nav = () => {
   return (
     <div className={changeColor ? "nav addedColor" : "nav"}>
       <div className="navLeft">
-        <Link to="/" className="link">
+        <Link to="/login " className="link">
           <img src={logo} alt="Tech Innvation Challenge" />
         </Link>
       </div>
@@ -39,11 +39,12 @@ const Nav = () => {
           </li>
           <li className="centerLinkItems">Past Events</li>
           <li className="centerLinkItems">
-          <Link to="/curriculum" className="link">
-                Curriculum
-                </Link></li>
+            <Link to="/curriculum" className="link">
+              Curriculum
+            </Link>
+          </li>
           <li className="centerLinkItems">
-          <Link to="/blog" className="link">
+            <Link to="/blog" className="link">
               Blog
             </Link>
           </li>
@@ -73,6 +74,11 @@ const Nav = () => {
         >
           <ul onClick={() => setNav(false)}>
             <li className="centerLinkItems__mobile">
+              <Link to="/" className="link">
+                Home
+              </Link>
+            </li>
+            <li className="centerLinkItems__mobile">
               <Link to="/about" className="link">
                 About
               </Link>
@@ -81,12 +87,12 @@ const Nav = () => {
             <li className="centerLinkItems__mobile">
               <Link to="/curriculum" className="link">
                 Curriculum
-                </Link>
-              </li>
+              </Link>
+            </li>
             <li className="centerLinkItems__mobile">
-            <Link to="/blog" className="link">
-              Blog
-            </Link>
+              <Link to="/blog" className="link">
+                Blog
+              </Link>
             </li>
             <li className="centerLinkItems__mobile">
               <Link to="/faq" className="link">
