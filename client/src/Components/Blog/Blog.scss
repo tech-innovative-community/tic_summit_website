@@ -1,0 +1,42 @@
+.BlogsContainer {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  background: var(--white);
+  box-shadow: 0 0px 4px rgb(0, 0, 0, 0.7);
+  transition: var(--trans);
+  overflow: hidden;
+  border-radius: 5px;
+  height: 40%;
+  margin: 10px;
+  img {
+    width: 100%;
+  }
+
+  .blogCont {
+    padding: 10px;
+    transition: var(--trans);
+    .message {
+      font-size: 15px;
+      font-weight: 300;
+    }
+
+    .title {
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    .date {
+      color: var(--blue);
+      font-size: 12px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+  }
+
+  @media (max-width: 800px) {
+    width: 100%;
+  }
+}
