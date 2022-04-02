@@ -29,31 +29,18 @@ const Nav = () => {
         <ul className="CenterLinks">
           <li className="centerLinkItems">
             <Link to="/" className="link">
-              Home
+              home
             </Link>
           </li>
-          <li className="centerLinkItems">
-            <Link to="/about" className="link">
-              About
-            </Link>
-          </li>
-          <li className="centerLinkItems">Past Events</li>
-          <li className="centerLinkItems">
-            <Link to="/curriculum" className="link">
-              Curriculum
-            </Link>
-          </li>
-          <li className="centerLinkItems">
-            <Link to="/blog" className="link">
-              Blog
-            </Link>
-          </li>
-          <li className="centerLinkItems">
-            <Link to="/faq" className="link">
-              FAQ
-            </Link>
-          </li>
-          <li className="centerLinkItems">Contact</li>
+          {["about", "past event", "curriculum", "blog", "FAQ", "contact"].map(
+            (item, index) => (
+              <li className="centerLinkItems" key={index}>
+                <Link to={`/${item}`} className="link">
+                  {item}
+                </Link>
+              </li>
+            )
+          )}
           <button className="applyBtn">Apply Now</button>
         </ul>
       </div>
@@ -75,31 +62,23 @@ const Nav = () => {
           <ul onClick={() => setNav(false)}>
             <li className="centerLinkItems__mobile">
               <Link to="/" className="link">
-                Home
+                home
               </Link>
             </li>
-            <li className="centerLinkItems__mobile">
-              <Link to="/about" className="link">
-                About
-              </Link>
-            </li>
-            <li className="centerLinkItems__mobile">Past Events</li>
-            <li className="centerLinkItems__mobile">
-              <Link to="/curriculum" className="link">
-                Curriculum
-              </Link>
-            </li>
-            <li className="centerLinkItems__mobile">
-              <Link to="/blog" className="link">
-                Blog
-              </Link>
-            </li>
-            <li className="centerLinkItems__mobile">
-              <Link to="/faq" className="link">
-                FAQ
-              </Link>
-            </li>
-            <li className="centerLinkItems__mobile">Contact</li>
+            {[
+              "about",
+              "past event",
+              "curriculum",
+              "blog",
+              "FAQ",
+              "contact",
+            ].map((item, index) => (
+              <li className="centerLinkItems__mobile" key={index}>
+                <Link to={`/${item}`} className="link">
+                  {item}
+                </Link>
+              </li>
+            ))}
             <button className="applyBtn">Apply Now</button>
           </ul>
         </div>

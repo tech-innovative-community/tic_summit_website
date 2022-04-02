@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-
 import PermMediaIcon from "@mui/icons-material/PermMedia";
 import { AuthContext } from "../../Context/AuthContext";
 import CancelIcon from "@mui/icons-material/Cancel";
@@ -7,7 +6,7 @@ import axios from "axios";
 import "./postBlog.scss";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import {post, toastOptions, uploadUrl} from "../../api/endpoints";
+import { post, toastOptions, uploadUrl } from "../../api/endpoints";
 
 const PostBlog = () => {
   const { user } = useContext(AuthContext);
@@ -17,34 +16,33 @@ const PostBlog = () => {
   const [message, setMessage] = useState("");
   const [file, setFile] = useState("");
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const blog = {
       userId: data._id,
       title,
-      message
+      message,
     };
-
 
     if (file) {
       const data = new FormData();
-      const fileName =  Date.now() + "-" + Math.round(Math.random() * 1e9) + file.name;
+      const fileName =
+        Date.now() + "-" + Math.round(Math.random() * 1e9) + file.name;
       data.append("name", fileName);
       data.append("file", file);
       blog.img = fileName;
       console.log(blog.img);
       try {
         await axios.post(uploadUrl, data);
-      } catch (err) {} 
+      } catch (err) {}
     }
 
     try {
-     await axios.post(post, blog);
-       toast.success("miles morale", toastOptions)
-       setInterval(()=>{
-         window.location.reload()
-       }, 1000)
+      await axios.post(post, blog);
+      toast.success("miles morale", toastOptions);
+      setInterval(() => {
+        window.location.reload();
+      }, 1000);
     } catch (error) {}
   };
 
