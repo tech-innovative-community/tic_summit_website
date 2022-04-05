@@ -18,3 +18,11 @@ module.exports.getAllPost = async (req, res, next) => {
     next(error);
   }
 };
+module.exports.singlePost = async (req, res, next) => {
+  try {
+    const post = await Post.findById(req.params.id);
+    return res.json(post);
+  } catch (error) {
+    next(error);
+  }
+};
