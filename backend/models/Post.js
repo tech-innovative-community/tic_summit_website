@@ -1,14 +1,20 @@
 const mongoose = require("mongoose");
-const userSchema = new mongoose.Schema({
-  name: {
-    type: String,
+const postShema = new mongoose.Schema(
+  {
+    tit: {
+      type: String,
+    },
+    img: {
+      type: String,
+    },
+    cloudinary_id: {
+      type: String,
+    },
+    message: {
+      type: String,
+    },
   },
-  avatar: {
-    type: String,
-  },
-  cloudinary_id: {
-    type: String,
-  },
-});
+  { timestamps: true }
+);
 
-module.exports = mongoose.model("Posts", userSchema);
+module.exports = mongoose.model("Posts", postShema);
