@@ -16,25 +16,25 @@ app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "public/images");
-  },
-  filename: function (req, file, cb) {
-    cb(null, req.body.name);
-  },
-});
-const upload = multer({ storage: storage });
-app.post("/api/upload", upload.single("file"), (req, res) => {
-  try {
-    return res.json({
-      status: true,
-      msg: "File uploded successfully",
-    });
-  } catch (error) {
-    console.error(error);
-  }
-});
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, "public/images");
+//   },
+//   filename: function (req, file, cb) {
+//     cb(null, req.body.name);
+//   },
+// });
+// const upload = multer({ storage: storage });
+// app.post("/api/upload", upload.single("file"), (req, res) => {
+//   try {
+//     return res.json({
+//       status: true,
+//       msg: "File uploded successfully",
+//     });
+//   } catch (error) {
+//     console.error(error);
+//   }
+// });
 
 app.get("/", (req, res) => {
   res.send("the ticsummit backend and made with love by zenith noble");
@@ -47,3 +47,5 @@ app.use("/api/post", require("./routes/post"));
 app.listen(PORT, () => {
   console.log(`server is running on ${PORT}`);
 });
+
+// dfknadnidadnidsn
