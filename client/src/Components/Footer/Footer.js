@@ -1,7 +1,10 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import "./Footer.css";
 
 const Footer = () => {
+  let location = useLocation();
+  let page = location.pathname.slice(1);
   return (
     <div className="Footer">
       <div className="footerContainer">
@@ -95,7 +98,7 @@ const Footer = () => {
           </div>
         </div>
         <button>
-          <a href="#home">
+          <a href={`#${page}`}>
             <i className="fa-solid fa-arrow-up-long"></i>
           </a>
         </button>

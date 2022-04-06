@@ -6,7 +6,7 @@
   background: var(--white);
   padding: 20px 10%;
   transition: var(--trans);
-  font-family: "Poppins";
+  font-family: "inherit";
 }
 
 .Special p {

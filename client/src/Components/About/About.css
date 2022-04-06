@@ -5,8 +5,7 @@
   transition: all var(--trans);
   width: 100%;
   color: var(--white);
-
-  font-family: "Poppins";
+  font-family: inherit;
 }
 
 .About img {
@@ -32,7 +31,6 @@
   font-size: 3em;
   width: 50%;
   font-weight: bold;
-  font-family: "oswald";
 }
 .aboutContainer .topContainer .p {
   width: 50%;

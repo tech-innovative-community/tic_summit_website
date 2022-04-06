@@ -6,7 +6,7 @@
   transition: var(--trans);
   background: var(--yellow);
   color: var(--blue);
-  font-family: "poppins";
+  font-family: "inherit";
 }
 
 .Questions {
@@ -14,7 +14,6 @@
   background: var(--yellow);
 }
 .Questions > p {
-  font-family: "oswald";
   text-align: center;
   margin-bottom: 30px;
   font-size: 2em;
@@ -97,7 +96,7 @@
     min-height: calc(100vh - 70px);
     transition: var(--trans);
     background: var(--yellow);
-    font-family: "poppins";
+    font-family: "inherit";
   }
   .Questions .faqContainer .questions {
     margin-bottom: 50px;

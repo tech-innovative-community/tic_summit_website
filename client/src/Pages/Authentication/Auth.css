@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: center;
   min-height: calc(100vh - 70px);
-  font-family: "poppins";
+  font-family: "inherit";
   transition: var(--trans);
 }
 
@@ -61,7 +61,6 @@
   width: 50%;
   height: 100%;
   background: var(--light__blue);
-  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: center;

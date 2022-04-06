@@ -3,7 +3,7 @@
   height: 80vh;
   background: var(--yellow);
   transition: var(--trans);
-  padding: 5px 10%;
+  padding: 2rem 10%;
   font-family: "Roboto";
 }
 

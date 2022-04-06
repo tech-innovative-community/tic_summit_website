@@ -13,7 +13,7 @@ connectDb();
 app.use(
   cors({
     origin:
-      "https://ticsummitbackend.herokuapp.com/" || "http://localhost:3000",
+      "*",
   })
 );
 

@@ -10,7 +10,7 @@
   height: 45vh;
   color: var(--white);
   position: relative;
-  font-family: "Poppins";
+  font-family: "inherit";
 }
 
 .Footer > p {

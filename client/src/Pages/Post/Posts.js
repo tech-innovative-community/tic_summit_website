@@ -5,6 +5,7 @@ import axios from "axios";
 import Blog from "../../Components/Blog/Blog";
 import { post } from "../../api/endpoints";
 import CancelIcon from "@mui/icons-material/Cancel";
+import Footer from "../../Components/Footer/Footer";
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
@@ -31,40 +32,62 @@ const Posts = () => {
   }, []);
   if (isError) {
     return (
-      <div className="posts">
-        <div className="poster">
-          {pop && (
-            <div className="popContainer">
-              <CancelIcon className="close" onClick={() => setPop(false)} />
-              <div className="pop">
-                <p>
-                  {isError.message + " please check your internet connection"}
-                </p>
+      <>
+        <div className="posts" id="blog">
+          <div className="poster">
+            {pop && (
+              <div className="popContainer">
+                <CancelIcon className="close" onClick={() => setPop(false)} />
+                <div className="pop">
+                  <p>
+                    {isError.message + " please check your internet connection"}
+                  </p>
+                </div>
               </div>
-            </div>
-          )}
-          <Skeleton />
-          <Skeleton />
-          <Skeleton />
-          <Skeleton />
-          <Skeleton />
-          <Skeleton />
+            )}
+            <Skeleton />
+            <Skeleton />
+            <Skeleton />
+            <Skeleton />
+            <Skeleton />
+            <Skeleton />
+          </div>
         </div>
-      </div>
+        <Footer />
+      </>
+    );
+  } else if (posts.length === 0) {
+    return (
+      <>
+        <div className="posts" id="blog">
+          <div className="poster">
+            <Skeleton />
+            <Skeleton />
+            <Skeleton />
+            <Skeleton />
+            <Skeleton />
+            <Skeleton />
+          </div>
+        </div>
+        <Footer />
+      </>
     );
   } else {
     return (
-      <div className="posts">
-        {posts ? (
-          <div className="poster">
-            {posts.map((p) => (
-              <Blog key={p._id} posts={p} />
-            ))}
-          </div>
-        ) : (
-          <Skeleton />
-        )}
-      </div>
+      <>
+        <div className="posts">
+          {posts ? (
+            <div className="poster">
+              {posts.map((p) => (
+                <Blog key={p._id} posts={p} />
+              ))}
+            </div>
+          ) : (
+            <Skeleton />
+          )}
+        </div>
+        <Footer />
+      </>
     );
   }
 };

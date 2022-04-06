@@ -6,7 +6,7 @@
   height: calc(100vh - 70px);
   background: var(--light__blue);
   transition: var(--trans);
-  font-family: "Poppins";
+  font-family: "inherit";
   padding: 5px 10%;
 }
 
@@ -44,6 +44,12 @@
   text-transform: capitalize;
   margin-bottom: 20px;
 }
+.rightLanding .desc {
+  color: var(--white);
+  margin-top: 20px;
+  line-height: 30px;
+  font-size: 1rem;
+}
 
 .rightLanding .header span {
   color: var(--pink);
@@ -61,7 +67,6 @@
 
 .rightLanding .applyBtn {
   margin-top: 70px;
-  font-family: "Poppins";
 }
 
 @media (max-width: 850px) {
@@ -94,6 +99,12 @@
     font-weight: bold;
     text-transform: capitalize;
     margin-bottom: 10px;
+  }
+  .rightLanding .desc {
+    color: var(--white);
+    margin-top: 20px;
+    line-height: initial;
+    font-size: 1rem;
   }
 
   .rightLanding .applyBtn {

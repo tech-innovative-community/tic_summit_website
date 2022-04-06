@@ -6,7 +6,7 @@
   padding: 0 10%;
   transition: var(--trans);
   margin-bottom: 40px;
-  font-family: "Poppins", serif;
+  font-family: "inherit", serif;
 }
 
 .Benefits .benefitsContainer {
@@ -15,13 +15,13 @@
   background: var(--blue);
   height: 100%;
   transition: var(--trans);
-  padding: 20px 4%;
+  padding: 3rem 4%;
 }
 
 .Benefits .benefitsContainer > p {
   font-size: 1.5em;
   font-weight: bold;
-  font-family: "oswald", sans-serif;
+  font-family: "inherit", sans-serif;
 }
 
 .Benefits .benefitsContainer > .benefits {
@@ -55,7 +55,7 @@
   left: 40px;
   line-height: 0.8;
   top: 0;
-  font-family: "oswald", sans-serif;
+  font-family: "inherit", sans-serif;
 }
 
 .Benefits .benefitsContainer > .benefits .leftBenefits i {

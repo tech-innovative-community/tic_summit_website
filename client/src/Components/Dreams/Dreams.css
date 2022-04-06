@@ -5,7 +5,7 @@
   transition: var(--trans);
   background: var(--white);
 
-  font-family: "Poppins";
+  font-family: "inherit";
 }
 
 .Dreams p:nth-child(1) {

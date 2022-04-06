@@ -1,5 +1,5 @@
 .posts {
-  font-family: "poppins";
+  font-family: "inherit";
   min-height: calc(100vh - 70px);
   display: flex;
   height: 100%;
@@ -42,7 +42,7 @@
         border-radius: 5px;
         padding: 20px;
         width: 20%;
-        font-family: "poppins";
+        font-family: "inherit";
         transition: var(--trans);
         @media screen and (max-width: 800px) {
           width: 90%;

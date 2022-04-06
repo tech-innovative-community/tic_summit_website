@@ -5,7 +5,7 @@ import "./FAQ.css";
 
 const FAQ = () => {
   return (
-    <div className="FAQ">
+    <div className="FAQ" id="FAQ">
       <Questions />
       <Footer />
     </div>
