@@ -6,7 +6,7 @@ import axios from "axios";
 import "./postBlog.scss";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { post, toastOptions } from "../../api/endpoints";
+import { cloudinary, serverPost, toastOptions } from "../../api/endpoints";
 
 const PostBlog = () => {
   const { user } = useContext(AuthContext);
@@ -20,24 +20,39 @@ const PostBlog = () => {
       title,
       message,
       userId: userId._id,
-      image: file,
     };
+
     try {
-      let formData = new FormData();
-      formData.append("image", blog.image);
-      formData.append("tit", blog.title);
-      formData.append("message", blog.message);
-      const res = await axios.post(post, formData);
-      if (res.status === 200) {
-        toast.success("Post Created Successfully", toastOptions);
-        setFile(null);
-        setMessage("");
-        setTitle("");
-      }
+      const data = new FormData();
+      data.append("file", file[0]);
+      data.append("upload_preset", "ticsummit");
+      console.log(data);
+      const res = await axios.post(cloudinary, data);
+
+      const result = res.data;
+      console.log(result);
+      const url = result.secure_url;
     } catch (error) {
       console.log(error);
-      toast.error("Error occured creating post", toastOptions);
     }
+
+    // try {
+    //   // const data = new FormData();
+    //   const filename = file.name;
+    //   blog.image = filename;
+    //   console.log(blog);
+    //   const res = await axios.post(serverPost, blog);
+
+    //   if (res.status === 200) {
+    //     toast.success("Post Created Successfully", toastOptions);
+    //     setFile(null);
+    //     setMessage("");
+    //     setTitle("");
+    //   }
+    // } catch (error) {
+    //   console.log(error);
+    //   toast.error("Error occured creating post", toastOptions);
+    // }
   };
 
   return (
