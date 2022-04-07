@@ -1,7 +1,7 @@
 const host = "https://ticsummitbackend.herokuapp.com";
 const server = "http://localhost:5000";
 export const cloudinary =
-  "https://api.cloudinary.com/v1_1/ticsummit-org/image/upload";
+  "https://api.cloudinary.com/v1_1/zenithnoble/image/upload";
 
 export const uploadUrl = "https://ticsummitbackend.herokuapp.com/api/upload";
 
