@@ -1,13 +1,10 @@
 const mongoose = require("mongoose");
 const postShema = new mongoose.Schema(
   {
-    tit: {
+    title: {
       type: String,
     },
-    img: {
-      type: String,
-    },
-    cloudinary_id: {
+    image: {
       type: String,
     },
     message: {
