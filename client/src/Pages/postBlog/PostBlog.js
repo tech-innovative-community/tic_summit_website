@@ -1,12 +1,7 @@
 import React, { useState } from "react";
 import "./postBlog.scss";
 import PermMediaIcon from "@mui/icons-material/PermMedia";
-import {
-  cloudinary,
-  post,
-  serverPost,
-  toastOptions,
-} from "../../api/endpoints";
+import { cloudinary, post, toastOptions } from "../../api/endpoints";
 import CloseIcon from "@mui/icons-material/Close";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
@@ -24,16 +19,16 @@ const PostBlog = () => {
         const formData = new FormData();
         formData.append("file", file);
         formData.append("upload_preset", "srsvrme3");
-        await axios.post(cloudinary, formData).then((res) => {
-          setImage(res.data.secure_url);
-        });
+        const res = await axios.post(cloudinary, formData);
+        const { secure_url } = res.data;
+        setImage(secure_url);
         const blog = {
           title,
           image,
           message,
         };
 
-        await axios.post(serverPost, blog).then((res) => {
+        await axios.post(post, blog).then((res) => {
           console.log(res);
         });
         toast.success("Blog created succesfull", toastOptions);
@@ -45,7 +40,7 @@ const PostBlog = () => {
           title,
           message,
         };
-        await axios.post(serverPost, blog).then((res) => {
+        await axios.post(post, blog).then((res) => {
           console.log(res);
         });
         toast.success("Blog created succesfull", toastOptions);
