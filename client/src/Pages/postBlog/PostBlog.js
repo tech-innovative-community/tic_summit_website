@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import "./postBlog.scss";
 import PermMediaIcon from "@mui/icons-material/PermMedia";
-import { cloudinary, post, toastOptions } from "../../api/endpoints";
+import {
+  cloudinary,
+  post,
+  serverPost,
+  toastOptions,
+} from "../../api/endpoints";
 import CloseIcon from "@mui/icons-material/Close";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
@@ -28,7 +33,7 @@ const PostBlog = () => {
           message,
         };
 
-        await axios.post(post, blog).then((res) => {
+        await axios.post(serverPost, blog).then((res) => {
           console.log(res);
         });
         toast.success("Blog created succesfull", toastOptions);
@@ -40,9 +45,12 @@ const PostBlog = () => {
           title,
           message,
         };
-        await axios.post(post, blog).then((res) => {
+        await axios.post(serverPost, blog).then((res) => {
           console.log(res);
         });
+        toast.success("Blog created succesfull", toastOptions);
+        setTitle("");
+        setMessage("");
       }
     } catch (error) {
       console.log(error.message);
@@ -53,11 +61,13 @@ const PostBlog = () => {
       <div className="blogContainer">
         <input
           type="text"
+          value={title}
           placeholder="Enter title"
           onChange={(e) => setTitle(e.target.value)}
         />
         <textarea
           placeholder="Enter message"
+          value={message}
           onChange={(e) => setMessage(e.target.value)}
         />
         <label htmlFor="file" className="shareOption">

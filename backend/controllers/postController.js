@@ -1,6 +1,7 @@
 const Post = require("../models/Post");
 module.exports.Post = async (req, res, next) => {
   const newPost = new Post(req.body);
+  console.log(newPost);
   try {
     const savedPost = await newPost.save();
     res.status(200).json(savedPost);
