@@ -32,7 +32,9 @@ const Landing = () => {
               href="https://docs.google.com/forms/d/e/1FAIpQLSel09AGU6V5Uo-qz-7kQTXB1ttbXyW5ikelKXfpHfdRfpGwQg/viewform"
               rel="noreferrer"
               target="_blank"
-            ></a>
+            >
+              Apply now
+            </a>
           </button>
         </div>
       </div>
