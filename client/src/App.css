@@ -1,6 +1,5 @@
 :root {
   --white: #fff;
-  --whitesmoke: #f5f5f5;
   --black: #000;
   --light__blue: #235ea0;
   --blue: #03204b;
@@ -8,6 +7,7 @@
   --border: 0.1rem solid white;
   --trans: 0.5s ease-in-out;
   --pink: #f748ae;
+  --grey: rgb(228, 225, 225);
 }
 
 .App {

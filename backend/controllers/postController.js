@@ -1,7 +1,6 @@
 const Post = require("../models/Post");
 module.exports.Post = async (req, res, next) => {
   const newPost = new Post(req.body);
-  console.log(newPost);
   try {
     const savedPost = await newPost.save();
     res.status(200).json(savedPost);
@@ -23,6 +22,19 @@ module.exports.singlePost = async (req, res, next) => {
     const post = await Post.findById(req.params.id);
     return res.json(post);
   } catch (error) {
+    next(error);
+  }
+};
+
+module.exports.deletePost = async (req, res, next) => {
+  try {
+    const post = await Post.findById(req.params.id);
+    await post.deletOne();
+    res.status(200).json({
+      msg: "post deleted successfully",
+    });
+  } catch (error) {
+    console.log(error.message);
     next(error);
   }
 };

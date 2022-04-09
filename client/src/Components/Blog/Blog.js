@@ -6,9 +6,9 @@ import { Link } from "react-router-dom";
 const Blog = ({ posts }) => {
   return (
     <div className="BlogsContainer">
-      {posts.image ? (
+      {posts.img ? (
         <React.Fragment>
-          <img src={posts.image} alt="" />
+          <img src={posts.img} alt="" />
           <div className="blogCont">
             <p className="date">{new Date(posts.createdAt).toLocaleString()}</p>
             <p className="title">{posts.title}</p>

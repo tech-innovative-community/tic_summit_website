@@ -13,7 +13,8 @@ const Landing = () => {
           <div className="topRight__landing">
             <p className="header">
               {" "}
-              Inspiring and Empowering the next <span>generation</span> of african techprenuers
+              Inspiring and Empowering the next <span>generation</span> of
+              african techprenuers
             </p>
 
             <p className="desc">
@@ -26,7 +27,13 @@ const Landing = () => {
               deserve.
             </p>
           </div>
-          <button className="applyBtn">Apply Now</button>
+          <button className="applyBtn">
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSel09AGU6V5Uo-qz-7kQTXB1ttbXyW5ikelKXfpHfdRfpGwQg/viewform"
+              rel="noreferrer"
+              target="_blank"
+            ></a>
+          </button>
         </div>
       </div>
     </div>

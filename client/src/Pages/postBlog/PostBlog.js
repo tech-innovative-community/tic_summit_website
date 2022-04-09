@@ -1,96 +1,103 @@
-import React, { useState } from "react";
-import "./postBlog.scss";
+import React, { useContext, useState } from "react";
 import PermMediaIcon from "@mui/icons-material/PermMedia";
-import { cloudinary, post, toastOptions } from "../../api/endpoints";
-import CloseIcon from "@mui/icons-material/Close";
+import { AuthContext } from "../../Context/AuthContext";
+import CancelIcon from "@mui/icons-material/Cancel";
 import axios from "axios";
-import { toast, ToastContainer } from "react-toastify";
+import "./postBlog.scss";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { post, toastOptions } from "../../api/endpoints";
 
 const PostBlog = () => {
-  const [file, setFile] = useState(null);
+  const { user } = useContext(AuthContext);
+  const userId = user.user;
   const [title, setTitle] = useState("");
   const [message, setMessage] = useState("");
-  const [image, setImage] = useState("");
+  const [file, setFile] = useState(null);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
+    const blog = {
+      title,
+      message,
+      userId: userId._id,
+      image: file,
+    };
     try {
-      if (file) {
-        const formData = new FormData();
-        formData.append("file", file);
-        formData.append("upload_preset", "srsvrme3");
-        const res = await axios.post(cloudinary, formData);
-        const { secure_url } = res.data;
-        setImage(secure_url);
-        const blog = {
-          title,
-          image,
-          message,
-        };
-
-        await axios.post(post, blog).then((res) => {
-          console.log(res);
-        });
-        toast.success("Blog created succesfull", toastOptions);
-        setTitle("");
-        setMessage("");
+      let formData = new FormData();
+      formData.append("image", blog.image);
+      formData.append("tit", blog.title);
+      formData.append("message", blog.message);
+      const res = await axios.post(post, formData);
+      if (res.status === 200) {
+        toast.success("Post Created Successfully", toastOptions);
         setFile(null);
-      } else {
-        const blog = {
-          title,
-          message,
-        };
-        await axios.post(post, blog).then((res) => {
-          console.log(res);
-        });
-        toast.success("Blog created succesfull", toastOptions);
-        setTitle("");
         setMessage("");
+        setTitle("");
       }
     } catch (error) {
-      console.log(error.message);
+      console.log(error);
+      toast.error("Error occured creating post", toastOptions);
     }
   };
-  return (
-    <form className="postBlog" onSubmit={handleSubmit}>
-      <div className="blogContainer">
-        <input
-          type="text"
-          value={title}
-          placeholder="Enter title"
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <textarea
-          placeholder="Enter message"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-        />
-        <label htmlFor="file" className="shareOption">
-          <input
-            type="file"
-            style={{ display: "none" }}
-            id="file"
-            accept="image/*"
-            onChange={(e) => setFile(e.target.files[0])}
-          />
-          <PermMediaIcon htmlColor="white" className="" />
-          <span className="shareOptionText">Photo</span>
-        </label>
-        {file && (
-          <div className="blogImg">
-            <CloseIcon onClick={() => setFile(null)} />
-            <img
-              src={URL.createObjectURL(file)}
-              alt="preview"
-              style={{ maxWidth: "100%" }}
-            />
-          </div>
-        )}
 
-        <button type="submit">submit</button>
+  return (
+    <div className="postBlog">
+      <div className="postBlogContainer">
+        <div className="topContainer">
+          <img src={userId.pic} alt="" />
+          <p>{userId.username}</p>
+        </div>
+        <div className="postContainer">
+          <input
+            className="form-control"
+            placeholder="Enter title"
+            type="text"
+            name="name"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <textarea
+            className="form-control"
+            placeholder="Enter message"
+            type="text"
+            name="name"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+          />
+          <label htmlFor="file" className="shareOption">
+            <PermMediaIcon htmlColor="white" className="shareIcon" />
+            <span className="shareOptionText">Photo</span>
+            <input
+              style={{ display: "none" }}
+              type="file"
+              id="file"
+              accept=".png,.jpeg,.jpg"
+              onChange={(e) => setFile(e.target.files[0])}
+            />
+          </label>
+          {file && (
+            <div className="shareImgContainer">
+              <CancelIcon
+                color="white"
+                className="shareCancelImg"
+                onClick={() => setFile(null)}
+              />
+              <img
+                src={URL.createObjectURL(file)}
+                alt="preview"
+                style={{ maxWidth: "100%" }}
+                className="shareImg"
+              />
+            </div>
+          )}
+          <button className="btn btn-primary" onClick={handleSubmit}>
+            Submit
+          </button>
+        </div>
       </div>
       <ToastContainer />
-    </form>
+    </div>
   );
 };
+
 export default PostBlog;
