@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Context/AuthContext";
 import "./sidebar.scss";
-import user from "../../Images/logo.jpg";
 
 const Sidebar = () => {
+  const { user } = useContext(AuthContext);
+  const data = user.user;
   const [active, setActive] = useState(1);
   return (
     <div className="Sidebar">
@@ -39,8 +41,8 @@ const Sidebar = () => {
           <div className="theme darktheme"></div>
         </div>
         <div className="user">
-          <img src={user} alt="" />
-          <span>admin</span>
+          <img src={data.pic} alt="" />
+          <span>{data.username}</span>
         </div>
       </div>
     </div>

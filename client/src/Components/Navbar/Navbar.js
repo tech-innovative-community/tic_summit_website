@@ -71,7 +71,9 @@ const Nav = () => {
             </Link>
           </li>
           {data ? (
-            <img src={data.pic} alt="userprofle" className="userProfile" />
+            <Link to="/admin">
+              <img src={data.pic} alt="userprofle" className="userProfile" />
+            </Link>
           ) : (
             <button className="applyBtn">Apply Now</button>
           )}
@@ -90,7 +92,7 @@ const Nav = () => {
         </div>
         <div
           className={changeColor ? "menuRoutes addedColor" : "menuRoutes"}
-          style={{ right: nav ? "0px" : "-60vw" }}
+          style={{ left: nav ? "0px" : "-60vw" }}
         >
           <ul onClick={() => setNav(false)}>
             <li className="centerLinkItems__mobile">

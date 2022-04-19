@@ -13,6 +13,8 @@
       flex-direction: column;
       position: fixed;
       height: 30px;
+      margin-top: 10px;
+      margin-left: 10px;
       background: white;
       padding: 5px;
       cursor: pointer;
@@ -24,6 +26,7 @@
         height: 5px;
         width: 100%;
         background-color: blue;
+        border-radius: 5px;
       }
     }
     .ul {
@@ -31,17 +34,16 @@
       height: calc(100vh - 70px);
       width: 50vw;
       padding-bottom: 10px;
-      left: 0;
       display: flex;
       color: white;
       flex-direction: column;
       justify-content: space-between;
-      background: var(--blue);
-      transition: var(--trans);
+      background: var(--light__blue);
+      transition: all var(--trans);
       padding-top: 6rem;
 
       &.off {
-        left: -50vw;
+        transition: var(--trans);
       }
 
       .toggle {
@@ -70,7 +72,6 @@
           color: var(--blue);
         }
       }
-
       .Sidebar__ul {
         display: flex;
         flex-direction: column;
@@ -78,6 +79,7 @@
         transition: var(--trans);
         padding-left: 5px;
         width: 100%;
+        padding-right: 10px;
 
         .activeLink {
           display: flex;
@@ -104,7 +106,7 @@
             }
 
             a {
-              background: var(--light__blue);
+              background: var(--blue);
               color: var(--white);
             }
           }
@@ -118,8 +120,9 @@
             margin-left: 5px;
             margin-top: 1px;
             padding: 5px;
-            background: rgb(196, 193, 193);
+            background: var(--white);
             border-radius: 5px;
+            color: var(--light__blue);
             height: 100%;
             text-transform: capitalize;
             display: flex;
@@ -129,11 +132,9 @@
             }
           }
           &:hover {
-            // transition: var(--trans);
-            color: var(--white);
+            transition: var(--trans);
             a {
-              background: var(--light__blue);
-              color: var(--white);
+              background: var(--blue);
               span {
                 transition: var(--trans);
                 padding: 5px;

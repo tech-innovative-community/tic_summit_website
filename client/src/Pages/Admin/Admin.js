@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import Container from "../../Components/Container/Container";
 import Sidebar from "../../Components/sidebar/Sidebar";
 import user from "../../Images/logo.jpg";
 import "./Admin.scss";
+import { AuthContext } from "../../Context/AuthContext";
+
 const Admin = () => {
   const [toggle, setToggle] = useState(false);
   const [active, setActive] = useState(1);
+  const { user } = useContext(AuthContext);
+  const data = user.user;
   return (
     <div className="Admin">
       <div className="menus" onClick={() => setToggle(!toggle)}>
@@ -47,8 +51,8 @@ const Admin = () => {
           </ul>
           <div className="sidebar_down">
             <div className="user">
-              <img src={user} alt="" />
-              <span>admin</span>
+              <img src={data.pic} alt="" />
+              <span>{data.username}</span>
             </div>
           </div>
         </div>
