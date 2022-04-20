@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import Container from "../../Components/Container/Container";
 import Sidebar from "../../Components/sidebar/Sidebar";
-import user from "../../Images/logo.jpg";
 import "./Admin.scss";
 import { AuthContext } from "../../Context/AuthContext";
 

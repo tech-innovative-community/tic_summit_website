@@ -6,7 +6,7 @@ import { AuthContext } from "../../Context/AuthContext";
 
 const Nav = () => {
   const { user } = useContext(AuthContext);
-  const data = user.user;
+  const data = user?.user;
   const [nav, setNav] = useState(false);
   const [annim, setAnnim] = useState("open");
 

@@ -6,37 +6,55 @@ import axios from "axios";
 import "./postBlog.scss";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { post, toastOptions } from "../../api/endpoints";
+import { cloudinary, post, toastOptions } from "../../api/endpoints";
 
 const PostBlog = () => {
   const { user } = useContext(AuthContext);
   const userId = user.user;
+  const [file, setFile] = useState(null);
   const [title, setTitle] = useState("");
   const [message, setMessage] = useState("");
-  const [file, setFile] = useState(null);
+  const [image, setImage] = useState("");
 
-  const handleSubmit = async () => {
-    const blog = {
-      title,
-      message,
-      userId: userId._id,
-      image: file,
-    };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      let formData = new FormData();
-      formData.append("image", blog.image);
-      formData.append("tit", blog.title);
-      formData.append("message", blog.message);
-      const res = await axios.post(post, formData);
-      if (res.status === 200) {
-        toast.success("Post Created Successfully", toastOptions);
-        setFile(null);
-        setMessage("");
+      if (file) {
+        const formData = new FormData();
+        formData.append("file", file);
+        formData.append("upload_preset", "srsvrme3");
+        await axios.post(cloudinary, formData).then((res) => {
+          setImage(res.data.secure_url);
+        });
+        const blog = {
+          title,
+          username: userId.username,
+          image,
+          message,
+        };
+
+        await axios.post(post, blog).then((res) => {
+          console.log(res);
+        });
+        toast.success("Blog created succesfull", toastOptions);
         setTitle("");
+        setMessage("");
+        setFile(null);
+      } else {
+        const blog = {
+          title,
+          username: userId.username,
+          message,
+        };
+        await axios.post(post, blog).then((res) => {
+          console.log(res);
+        });
+        toast.success("Blog created succesfull", toastOptions);
+        setTitle("");
+        setMessage("");
       }
     } catch (error) {
-      console.log(error);
-      toast.error("Error occured creating post", toastOptions);
+      console.log(error.message);
     }
   };
 

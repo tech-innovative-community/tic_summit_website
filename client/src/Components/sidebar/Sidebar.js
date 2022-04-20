@@ -7,6 +7,13 @@ const Sidebar = () => {
   const { user } = useContext(AuthContext);
   const data = user.user;
   const [active, setActive] = useState(1);
+
+  const handleLogOut = () => {
+    localStorage.removeItem("user");
+    window.location.reload();
+    window.location.href = "/";
+  };
+
   return (
     <div className="Sidebar">
       <ul className="Sidebar__ul">
@@ -42,7 +49,7 @@ const Sidebar = () => {
         </div>
         <div className="user">
           <img src={data.pic} alt="" />
-          <span>{data.username}</span>
+          <span onClick={handleLogOut}>Log Out</span>
         </div>
       </div>
     </div>

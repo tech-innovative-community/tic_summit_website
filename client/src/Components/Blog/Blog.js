@@ -10,6 +10,9 @@ const Blog = ({ posts }) => {
         <React.Fragment>
           <img src={posts.img} alt="" />
           <div className="blogCont">
+            <div className="blogCont__top">
+              <h1>{posts.username}</h1>
+            </div>
             <p className="date">{new Date(posts.createdAt).toLocaleString()}</p>
             <p className="title">{posts.title}</p>
             <p className="message">{posts.message}</p>
