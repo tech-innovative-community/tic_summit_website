@@ -2,7 +2,8 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   background: var(--white);
   padding: 20px 10%;
   transition: var(--trans);
@@ -10,7 +11,7 @@
 }
 
 .Special p {
-  font-size: 20px;
+  font-size: 2rem;
   margin-bottom: 20px;
 }
 
@@ -26,6 +27,7 @@
   display: flex;
   justify-content: space-between;
   height: 100%;
+  width: 100%;
 }
 
 .specialContainer .leftSpecial {
@@ -41,9 +43,10 @@
 .specialContainer .leftSpecial .specials {
   width: 100%;
   display: flex;
+  margin: 5px 0;
   align-items: center;
   background: var(--light__blue);
-  height: 30%;
+  height: 150px;
 }
 .specialContainer .leftSpecial .specials .p {
   width: 20%;
@@ -67,7 +70,7 @@
 }
 
 .Special .specialContainer .rightSpecial {
-  height: 60%;
+  height: 70vh;
   width: 40%;
 }
 
@@ -108,7 +111,7 @@
   }
 
   .Special .specialContainer .rightSpecial {
-    height: 60%;
+    height: 50vh;
     width: 100%;
   }
 }
